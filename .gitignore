@@ -1,0 +1,23 @@
+# Downloaded CGHD dataset and exports
+data/
+*.pkl
+*.pickle
+
+# Local environment
+.env
+.conda/
+
+# Python and notebook clutter
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Training outputs
+*.pt
+*.pth
+*.ckpt
+runs/
+wandb/
+
+# OS
+.DS_Store
