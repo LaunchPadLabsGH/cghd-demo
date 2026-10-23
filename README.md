@@ -4,6 +4,8 @@ This is a demo for an HMGCC Co-Creation bid. The challenge is set out in the [ch
 
 Our bid is an X-ray analysis workflow. This project covers the object detection stage of that workflow, locating the components in an image and assigning each one a class. Every prediction comes with a confidence score, so an operator can see how sure the model is about each box and which ones need a second look. The work was severely time limited, and the challenge X-rays are only provided to the winning provider, so this is a demo of the method, not a detector trained or scored on the challenge X-rays. Later stages, such as tracing wires and tracks, building a circuit diagram, and operator review, are outside this demo.
 
+This demo was put together in a very short window, but the full project runs over 12 weeks planned in sprints, each with a set outcome, so the stages above are scheduled in rather than left out, and the general quality and organisation of the work will be much stronger.
+
 ## Dataset
 
 We trained and evaluated on [CGHD](https://huggingface.co/datasets/lowercaseonly/cghd) (Circuit Graph Hand-Drawn). These are photographs of hand-drawn circuit diagrams, with a bounding box and a class for each symbol.
@@ -16,7 +18,7 @@ The two notebooks are one pass through the workflow we would use to build that s
 
 ### 1. Exploratory analysis
 
-`ObjectClassification/eda.ipynb` records the evidence we used to choose a model. Given our focus is the components and their connections, not the writing on the page, we left the text labels out. Removing them drops about `36.66%` of the boxes and still leaves over `150,000` for modelling.
+`ObjectClassification/eda.ipynb` Exploratory Data Analysis records the evidence we used to choose a model. Given our focus is the components and their connections, not the writing on the page, we left the text labels out. Removing them drops about `36.66%` of the boxes and still leaves over `150,000` for modelling.
 
 What we found:
 
@@ -37,7 +39,7 @@ The model choice follows from that evidence. `ObjectClassification/detr.ipynb` f
 - A fixed number of object queries avoids anchor flooding, giving under-represented classes a fairer chance across all 58 classes.
 - Anchor-free boxes can be any size and aspect ratio, which suits our small, distinct objects.
 
-In the full bid, EDA would be used the same way to shortlist more than one candidate model. Each candidate would then be trained and scored on the same fixed metrics, giving a fair comparison of how each model performs on the dataset.
+In the full bid, EDA, would be used the same way to shortlist more than one candidate model. Each candidate would then be trained and scored on the same fixed metrics, giving a fair comparison of how each model performs on the dataset.
 
 The training setup for this run:
 
