@@ -6,6 +6,7 @@ data/
 # Local environment
 .env
 .conda/
+.vscode/
 
 # Python and notebook clutter
 __pycache__/
